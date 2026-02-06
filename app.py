@@ -28,7 +28,8 @@ def hello():
 
    if name:
        print('Request for hello page received with name=%s' % name)
-       return render_template('hello.html', name=name)
+       return render_template('hello.html', name=name, 
+                              greeting_time=datetime.now().strftime('%I:%M %p'))
    else:
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
@@ -49,6 +50,16 @@ def echo():
     return jsonify({
         'echo': data,
         'received_at': datetime.now().isoformat()
+    })
+
+@app.route('/api/time')
+def server_time():
+    """Return current server time in multiple formats."""
+    now = datetime.now()
+    return jsonify({
+        'iso': now.isoformat(),
+        'readable': now.strftime('%B %d, %Y at %I:%M %p'),
+        'unix': int(now.timestamp())
     })
 
 @app.route('/dashboard')
