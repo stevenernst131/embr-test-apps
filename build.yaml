@@ -1,5 +1,5 @@
 version: 1
 platform: python
-platformVersion: 3.14
+platformVersion: 3.100000
 run:
   port: 8080
