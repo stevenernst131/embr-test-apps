@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <title>Guestbook - Embr Test App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<html>
+   <body>
+     <main>
+        <div class="px-4 py-3 my-2 text-center">
+            <h1 class="display-6 fw-bold text-primary">📝 Guestbook</h1>
+            <p class="text-muted">Leave a message for other visitors!</p>
+        </div>
+        <div class="col-md-6 mx-auto">
+            <form method="post" action="{{ url_for('sign_guestbook') }}" class="card p-3 mb-4">
+                <div class="mb-2">
+                    <input type="text" class="form-control" name="name" placeholder="Your name" required>
+                </div>
+                <div class="mb-2">
+                    <textarea class="form-control" name="message" rows="2" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Guestbook</button>
+            </form>
+
+            {% if messages %}
+            <h5 class="mb-3">Messages ({{ messages|length }})</h5>
+            {% for msg in messages|reverse %}
+            <div class="card mb-2">
+                <div class="card-body py-2">
+                    <strong>{{ msg.name }}</strong>
+                    <span class="text-muted float-end small">{{ msg.timestamp }}</span>
+                    <p class="mb-0 mt-1">{{ msg.message }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="text-center text-muted">No messages yet. Be the first to sign!</p>
+            {% endif %}
+
+            <div class="text-center mt-3">
+                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Back home</a>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">Dashboard</a>
+            </div>
+        </div>
+     </main>
+   </body>
+</html>

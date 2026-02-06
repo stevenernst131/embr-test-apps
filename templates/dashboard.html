@@ -21,6 +21,15 @@
                     <div class="card-body">
                         <h5 class="card-title">Server Info</h5>
                         <p>Server Time: {{ server_time }}</p>
+                        <p>Uptime: {{ uptime }}</p>
+                    </div>
+                </div>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Guestbook</h5>
+                        <p class="display-4">{{ guestbook_count }}</p>
+                        <p class="text-muted">Messages</p>
+                        <a href="{{ url_for('guestbook_page') }}" class="btn btn-outline-primary btn-sm">View Guestbook</a>
                     </div>
                 </div>
                 <div class="card my-3">
@@ -30,6 +39,7 @@
                             <li class="list-group-item"><code>GET /api/stats</code> - Visitor statistics</li>
                             <li class="list-group-item"><code>POST /api/echo</code> - Echo JSON data</li>
                             <li class="list-group-item"><code>GET /api/time</code> - Server time (multiple formats)</li>
+                            <li class="list-group-item"><code>GET /api/health</code> - Health check with uptime</li>
                         </ul>
                     </div>
                 </div>
