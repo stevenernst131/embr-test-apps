@@ -54,8 +54,6 @@ def echo():
 @app.route('/dashboard')
 def dashboard():
     """Dashboard page showing stats and server info."""
-    # Deliberate bug: importing a non-existent module
-    from utils import format_uptime
     return render_template('dashboard.html', 
                            visit_count=visitor_count,
                            server_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
