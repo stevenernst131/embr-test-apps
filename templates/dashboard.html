@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+    <title>Dashboard - Embr Test App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<html>
+   <body>
+     <main>
+        <div class="px-4 py-3 my-2 text-center">
+            <h1 class="display-6 fw-bold text-primary">Dashboard</h1>
+            <div class="col-md-6 mx-auto">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Visitor Stats</h5>
+                        <p class="display-4">{{ visit_count }}</p>
+                        <p class="text-muted">Total visits</p>
+                    </div>
+                </div>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Server Info</h5>
+                        <p>Server Time: {{ server_time }}</p>
+                    </div>
+                </div>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">API Endpoints</h5>
+                        <ul class="list-group list-group-flush text-start">
+                            <li class="list-group-item"><code>GET /api/stats</code> - Visitor statistics</li>
+                            <li class="list-group-item"><code>POST /api/echo</code> - Echo JSON data</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">Back home</a>
+            </div>
+        </div>
+     </main>
+   </body>
+</html>
