@@ -1,35 +1,37 @@
 <!doctype html>
+<html>
 <head>
-    <title>Hello Azure - Python Quickstart</title>
+    <title>Embr App — Deployed with Embr 🔥</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+        body { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height: 100vh; }
+        .hero-card { background: rgba(255,255,255,0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 1.5rem; }
+        .ember-glow { color: #ff6b35; text-shadow: 0 0 20px rgba(255,107,53,0.4); }
+        .btn-ember { background: linear-gradient(135deg, #ff6b35, #f7931e); border: none; color: #fff; }
+        .btn-ember:hover { background: linear-gradient(135deg, #f7931e, #ff6b35); color: #fff; transform: translateY(-1px); }
+    </style>
 </head>
-<html>
    <body>
      <main>
-        <div class="px-4 py-3 my-2 text-center">
-            <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
-            <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-            <h1 class="display-6 fw-bold text-primary">Welcome to Azure</h1>            
-          </div>
-        <form method="post" action="{{url_for('hello')}}">
-            <div class="col-md-6 mx-auto text-center">
-                <label for="name" class="form-label fw-bold fs-5">Could you please tell me your name?</label>
-
-                <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                    <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;">
-                  </div>            
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-                  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Say Hello</button>
-                </div>            
+        <div class="px-4 py-5 my-4 text-center">
+            <div class="col-lg-6 mx-auto hero-card p-5">
+                <h1 class="display-4 fw-bold ember-glow mb-3">🔥 Embr App</h1>
+                <p class="lead text-light mb-4">Deployed with Embr — fast, simple, powerful.</p>
+                <form method="post" action="{{url_for('hello')}}">
+                    <label for="name" class="form-label text-light fs-5">What's your name?</label>
+                    <div class="d-flex justify-content-center align-items-center gap-2 my-3">
+                        <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;" placeholder="Enter your name">
+                        <button type="submit" class="btn btn-ember btn-lg px-4">Say Hello</button>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <p class="text-secondary small">👥 Visitors: {{ visit_count }} | 🕐 {{ server_time }}</p>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light btn-sm me-1">📊 Dashboard</a>
+                    <a href="{{ url_for('guestbook_page') }}" class="btn btn-outline-light btn-sm">📝 Guestbook</a>
+                </div>
             </div>
-        </form>
-        <div class="col-md-6 mx-auto text-center mt-4">
-            <p class="text-muted">Visitors: {{ visit_count }} | Server time: {{ server_time }}</p>
-            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary btn-sm">Dashboard</a>
-            <a href="{{ url_for('guestbook_page') }}" class="btn btn-outline-secondary btn-sm">Guestbook</a>
         </div>
-     </main>      
+     </main>
    </body>
 </html>
