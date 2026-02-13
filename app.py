@@ -16,7 +16,7 @@ app_start_time = datetime.now()
 def index():
    global visitor_count
    visitor_count += 1
-   print('Request for index page received')
+   print('Request for index page received!')
    return render_template('index.html', visit_count=visitor_count, server_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 @app.route('/favicon.ico')
