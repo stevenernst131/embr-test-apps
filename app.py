@@ -106,5 +106,11 @@ def dashboard():
                            server_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 
+@app.route('/api/version')
+def version():
+    """Return the current app version."""
+    return jsonify({'version': '1.1.0', 'name': 'embr-test-app'})
+
+
 if __name__ == '__main__':
    app.run(port=8080)
